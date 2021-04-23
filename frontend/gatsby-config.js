@@ -19,11 +19,23 @@ module.exports = {
         contentTypes: ["article", "category", "writer"],
         singleTypes: [`homepage`, `global`],
         queryLimit: 1000,
+        loginData: {
+          identifier: process.env.GATSBY_API_IDENTIFIER,
+          password: process.env.GATSBY_API_PASS,
+        },
       },
     },
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "Strapi",
+        fieldName: "strapi",
+        url: process.env.API_GRAPHQL_ENDPOINT,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
